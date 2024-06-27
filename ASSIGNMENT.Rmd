@@ -1,0 +1,113 @@
+---
+title: "adventure"
+author: "James"
+date: "2024-06-19"
+output: html_document
+---
+```{r}
+#use neccesary libraries
+
+library(tidyverse)
+library(readxl)
+```
+
+```{r}
+library(tidyverse)
+library(readxl)
+```
+
+
+```{r}
+sales <- read_excel(file.choose())
+product<- read_excel(file.choose())
+region<- read_excel(file.choose())
+calender<- read_excel(file.choose())
+customers<- read_excel(file.choose())
+```
+
+
+```{r}
+```
+
+```
+```{r}
+#import all files for adventureworks
+
+sales <- read_excel(file.choose())
+products <- read_excel(file.choose())
+region <- read_excel(file.choose())
+calender<- read_excel(file.choose())
+customers <- read_excel(file.choose())
+
+```
+```{r coumn veriable}
+#show columns in each variable
+
+
+```{r}
+View(head(sales))
+View(head(product))
+View(head(region))
+View(head(calender))
+View(head(customers))
+```
+
+```{r joining }
+#joining the sales and products table using the
+#foreign key- prodkey
+```
+
+
+```{r joining }
+sales_prod<- inner_join(x=sales,y= products, by="prodkey")
+sales_prod
+```
+
+
+```{r joining }
+sales_cost <- inner_join(x=sales,y= customers, by="custkey")
+sales_cost
+```
+
+
+```{r joining }
+sales_reg <- inner_join(x=sales,y= region, by="regionkey")
+sales_reg
+
+
+
+```
+
+
+```
+
+```{r}
+```{r}
+sales_cals <- inner_join(x=sales,y= calender, by="datekey")
+sales_cals
+```
+```{r}
+#total sales by category
+sales_prod %>% 
+  group_by(category) %>%  summarise(total =format(x=sum(revenue),big.mark =",",scientific=F)) %>% 
+arrange(desc(total))
+```
+
+
+```
+```{r}
+
+```
+
+```{r}
+#classwork show total sales in each year visualize the result using column cha
+```{r}
+sales_cals %>% group_by(year) %>% summarise(total_revenue=sum(revenue)) %>% 
+arrange(desc(total_revenue)) %>% ggplot(aes(x=year,y= total_revenue, fill=year))+geom_col()
+```
+
+
+
+
+
+
